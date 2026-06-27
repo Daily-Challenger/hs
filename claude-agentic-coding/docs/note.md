@@ -66,3 +66,25 @@ https://claude.com/blog/building-agents-with-the-claude-agent-sdk
 5. 플러그인
  - 앞의 4가지를 하나의 배포 단위로 묶는 컨테이너
  - .claude-plugin/plugin.json 매니페스트를 통해 메타데이터를 정의
+
+
+ #### IAM 권한 관리
+ 1. 클로드 API 인증: 
+ - 클로드 콘솔을 통해 앤트로픽의 API에 접근하는 방식
+ - 역할: 클로드 코드, Developer
+2. 아마존 배드락 인증
+ - AWS 인프라를 사용하는 조직
+ - CLAUDE_CODE_USE_BEDROCK 환경 변수를 설정
+3. 구글 버텍스 AI 인증
+ - GCP 사용 
+ - CLAUDE_CODE_USE_VERTEX
+
+- `/permissions` 명령으로 현재 적용된 모든 권한 규칙을 확인 및 관리
+
+```
+#Read와 Edit 규칙이 지원하는 경로 패턴
+- //path: 시스템 root의 절대경로
+- ~/path: 홈 디렉토리의 경로
+- /path: {설저 파일 위치}/src/**/*.js
+- path 또는 .path: {현재 디렉토리}/*.env
+```
