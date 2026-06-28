@@ -88,3 +88,25 @@ https://claude.com/blog/building-agents-with-the-claude-agent-sdk
 - /path: {설저 파일 위치}/src/**/*.js
 - path 또는 .path: {현재 디렉토리}/*.env
 ```
+
+- WebFetch: 도메인 단위로 네트어크 접근 제어
+- MCP 도구에 대한 권한
+ 1. mcp_puppeteer: puppeteer 서버의 모든 도구
+ 2. mcp_puppeteer__puppeteer_navigate: 서버내 특정 도구
+
+
+
+#### 에이전트 스킬
+```
+#스킬 디렉터리의 기본구조
+my-skill
+ㄴ SKILL.md(필수 파일)
+ㄴ reference.md
+ㄴ scripts/
+    ㄴ helper.py
+ㄴ templates/
+    ㄴ template.txt
+```
+
+#### SKILL.md 구조
+ - 프론트매터 필드: name. description, allowed-tools, model, context, agent
