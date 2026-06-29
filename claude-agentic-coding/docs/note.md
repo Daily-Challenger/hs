@@ -110,3 +110,11 @@ my-skill
 
 #### SKILL.md 구조
  - 프론트매터 필드: name. description, allowed-tools, model, context, agent
+
+
+#### SKILL 을 활용한 비용 최적화
+1. description 의 토큰 밀도를 극대화 -> 최대한의 발견 가능성 확보
+2. 클로드가 이미 알고 있는 지식은 제거.
+3. 지원 파일의 구조를 도메인별로 분리.
+4. 입출력 예시 최적화(대표만 명시. 나머지는 별도 md파일로)
+5. 스크립트 우선 전략
