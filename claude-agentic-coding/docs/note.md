@@ -118,3 +118,24 @@ my-skill
 3. 지원 파일의 구조를 도메인별로 분리.
 4. 입출력 예시 최적화(대표만 명시. 나머지는 별도 md파일로)
 5. 스크립트 우선 전략
+
+- 스킬 조합 시 유사한 기능의 스킬이 동시에 활성화 될 수 있으므로 고유한 트리거 용어를 description에 지정(예, 데이터처리 -> Excel 시트 분석)
+
+#### 스킬 개발 순서
+1. 스킬 목적과 범위를 명확히 정의
+2. 스킬 디렉터리 생성
+3. SKILL.md 파일 작성
+4. 지원 파일 추가
+
+#### 스크립트를 포함한 스킬 디렉터리 구조
+```
+skill/
+├── SKILL.md
+├── reference.md
+├── scripts/
+│   ├── format_data.py
+│   └── requirements.txt
+└── templates/
+    └── result_template.json
+
+```
