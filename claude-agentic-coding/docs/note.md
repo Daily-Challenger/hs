@@ -139,3 +139,8 @@ skill/
     └── result_template.json
 
 ```
+
+#### skill의 점진적 작동 방식
+1. 핵심원칙(SKILL.md)
+2. 가이드,기법(reference)
+3. 템플릿
