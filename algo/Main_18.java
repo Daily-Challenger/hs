@@ -16,6 +16,7 @@ public class Main_18 {
      * memory 배열 사용으로 원본 보존
      * 추가 메모리: O(n²)
      * 시간복잡도: O(n²)
+     * (  높이가 n일때 저장하는 int개수: n(n + 1) / 2  )
      * DP개념 명확
      * @param triangle
      * @return
@@ -51,7 +52,7 @@ public class Main_18 {
 
     /**
      * triangle 배열 자체에 값을 저장
-     * 원본 변경
+     * 원본 변경 되지만 위보다 메모리 사용량이 적음
      * 추가 메모리: O(1)
      * 시간복잡도: O(n²)
      * 간단하고 최적화 목적
