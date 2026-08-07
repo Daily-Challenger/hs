@@ -1,12 +1,14 @@
 import java.util.*;
-import java.util.stream.Collectors;
-
 public class Main_28 {
     
     public static void main(String[] args) {
         // System.out.println(solution(626331));
 
-        System.out.println(solution2("4444"));
+        // System.out.println(solution2("4444"));
+
+        // System.out.println(solution7(24,27));
+
+        System.out.println(solution8("Zbcdefg"));
     }
 
     /**
@@ -112,4 +114,121 @@ public class Main_28 {
         } 
         return sb.toString();
     }
+
+    /**
+     * 수박수박수..
+     * @param n
+     * @return
+     */
+    public static String solution6(int n) {
+
+        StringBuilder sb = new StringBuilder();
+        int count = 1;
+        while(count < n + 1) {
+            if(count % 2 == 0) {
+                sb.append("박");
+            } else {
+                sb.append("수");
+            }
+            count++;
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 약수의 개수가 짝수이면 더하고, 홀수이면 뺴기
+     * @param left
+     * @param right
+     * @return
+     */
+    public static int solution7(int left, int right) {
+
+        int answer = 0;
+        for(int i = left; i <= right; i++) {
+            int factorCnt = getFactors(i);
+            if(factorCnt % 2 == 0) {
+                answer += i;
+            } else {
+                answer -= i;
+            }
+        }
+
+        return answer;
+    }
+
+    //약수구하는 메소드
+    public static int getFactors(int i) {
+
+        // int count = 1; 
+        // int x = i / 2;
+        // while(x > 0) {
+        //     if(i % x == 0) {
+        //         count++;
+        //     }
+        //     x--;
+        // }
+        // return count;
+
+        //더 짧게 도는 코드
+        /**
+         * 약수는 쌍으로 나오므로 √n까지만 확인.
+         * 약수를 하나 찾으면 대응되는 다른 약수까지 같이 세고, 제곱수인 경우만 중복을 피함.
+         */
+        int count = 0;
+        for (int x = 1; x * x <= i; x++) {  // √i까지만 확인
+            if (i % x == 0) {               // x가 약수라면
+               if (x * x == i) {            // 36의 6처럼 같은 약수가 한 쌍인 경우
+                    count++;
+                } else {
+                    count += 2;             // x와 i/x, 약수 2개를 한 번에 카운트
+                }
+            }
+        }
+        return count;
+    }
+
+    public static String solution8(String s) {
+        char[] chArr = s.toCharArray();
+
+        Arrays.sort(chArr);
+
+        StringBuilder sb = new StringBuilder();
+
+        for(char c : chArr) {
+            sb.append(c);
+        }
+
+        return sb.reverse().toString();
+    }
+
+    public long solution9(int price, int money, int count) {
+        long answer = 0;
+
+        long total = 0;
+
+        for(int i = 1; i <= count; i++) {
+            total += i * price;
+        }
+
+        if(money > total) {
+            answer = 0;
+        } else {
+            answer = total - money;
+        }
+        return answer;
+    }
+
+    public boolean solution10(String s) {
+
+        if(s.length() != 4 && s.length() != 6) {
+            return false;
+        }
+        for(char c : s.toCharArray()) {
+            if(!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
+ 
