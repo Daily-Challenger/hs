@@ -15,6 +15,9 @@ public class Main_67 {
 
     /**
      * 
+     * 각 세로 열을 Deque로 만들어 상자를 지그재그 순서대로 실제 적재한 뒤,
+     * 목표 상자가 있는 열을 찾아 위에서부터 꺼내며 개수를 계산한다.
+     * 직관적이지만 모든 상자를 저장하므로 불필요한 O(n) 공간과 자료구조 탐색이 발생한다.
      * @param n 상자 전체 개수
      * @param w 가로로 놓는 상자의 개수
      * @param num 찾으려는 상자의 숫자
@@ -43,7 +46,7 @@ public class Main_67 {
             deques[i] = new ArrayDeque<>();
         }
 
-         int idx = 0;
+        int idx = 0;
         int row = 0;
         for(int i = 1; i <= n; i++) {
 
@@ -83,4 +86,36 @@ public class Main_67 {
         return answer;
     }    
     
+    /**
+     * 상자 번호와 행의 홀짝을 이용해 실제 세로 열 위치를 계산하고,
+     * 목표 상자와 같은 열에 있는 위쪽 상자들의 개수를 센다.
+     * 실제 적재 구조를 만들지 않아 풀이 1의 불필요한 Deque 사용을 제거하고 O(1) 공간으로 개선했다.
+     * @param n
+     * @param w
+     * @param num
+     * @return
+     */
+    public int solution2(int n, int w, int num) {
+        int targetColumn = getColumn(num, w);
+        int answer = 0;
+
+        // num 부터 n까지 중 같은 세로 열에 있는 상자만 센다.
+        // num 보다 작은 상자는 목표 상자 아래에 있으므로 확인할 필요 없음
+        for(int box = num; box <= n; box++) {
+            if(getColumn(box, w) == targetColumn) {
+                answer++;
+            }
+        }
+
+        return answer;
+    }
+
+    private int getColumn(int box, int w) {
+        int row = (box - 1) / w;
+        int offset = (box - 1) % row;
+
+        //짝수 층은 왼 -> 오
+        //홀수 층은 오 -> 왼
+        return row % 2 == 0 ? offset : w - 1 - offset;
+    }
 }
