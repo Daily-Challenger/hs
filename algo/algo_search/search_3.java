@@ -10,17 +10,19 @@ public class search_3 {
 
     public static void main(String[] args) {
         search_3 s3 = new search_3();
-        s3.solution();
+        System.out.println(s3.solution());
+        
     }
 
-    public void solution() {
-        int n = 6;
+    public int solution() {
+        int n = 7;
 
         int[][] edges = {
             {1, 2},
             {1, 3},
             {2, 4},
-            {3, 4}
+            {3, 4},
+            {5, 6}
         };
         graph = new ArrayList<>();
 
@@ -37,9 +39,20 @@ public class search_3 {
         }
 
         visited = new boolean[n + 1];
-        dfs(1);
 
-        System.out.println(count);
+        int answer = 0;
+
+        for(int i = 1; i <= n; i++) {
+            if(visited[i]) {
+                continue;
+            }
+
+            dfs(i);
+            answer++;
+        }
+
+
+        return answer;
 
 
     }
@@ -49,7 +62,7 @@ public class search_3 {
         visited[current] = true;
 
         //2. 방문한 노드 개수 증가
-        count++;
+        // count++;
 
         //3. 현재 노드의 인접 노드 탐색
         for(int next : graph.get(current)) {
